@@ -1,6 +1,6 @@
 ## A RabbitMQ Scheduler for Scrapy Framework.
 
-Scrapy-rabbitmq is a tool that lets you feed and queue URLs from RabbitMQ using the [Scrapy framework](http://doc.scrapy.org/en/latest/index.html).
+Scrapy-rabbitmq is a tool that lets you feed and queue URLs from RabbitMQ to Scrapy spiders, using the [Scrapy framework](http://doc.scrapy.org/en/latest/index.html).
 
 ## Installation
 
