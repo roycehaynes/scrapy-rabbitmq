@@ -1,0 +1,15 @@
+MANIFEST.in
+README.md
+setup.py
+scrapy_rabbitmq/__init__.py
+scrapy_rabbitmq/connection.py
+scrapy_rabbitmq/dupefilter.py
+scrapy_rabbitmq/pipelines.py
+scrapy_rabbitmq/queue.py
+scrapy_rabbitmq/scheduler.py
+scrapy_rabbitmq/spiders.py
+scrapy_rabbitmq.egg-info/PKG-INFO
+scrapy_rabbitmq.egg-info/SOURCES.txt
+scrapy_rabbitmq.egg-info/dependency_links.txt
+scrapy_rabbitmq.egg-info/requires.txt
+scrapy_rabbitmq.egg-info/top_level.txt
