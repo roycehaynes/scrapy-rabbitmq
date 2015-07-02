@@ -31,6 +31,9 @@ requires = [
 setup(
     name='scrapy-rabbitmq',
     author='Royce Haynes',
+    description='RabbitMQ Plug-in for Scrapy',
+    version='0.1.2',
+    author_email='royce.haynes@gmail.com',
     license='MIT',
     url='https://github.com/roycehaynes/scrapy-rabbitmq',
     install_requires=requires,
