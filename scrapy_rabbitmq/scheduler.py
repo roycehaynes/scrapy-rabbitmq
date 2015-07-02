@@ -18,7 +18,6 @@ class Scheduler(object):
     """
 
     def __init__(self, server, persist, queue_key, queue_cls, dupefilter_key, idle_before_close, *args, **kwargs):
-
         self.server = server
         self.persist = persist
         self.queue_key = queue_key
