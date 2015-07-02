@@ -86,6 +86,8 @@ channel.basic_publish(exchange='',
                       routing_key=settings.RABBITMQ_QUEUE_NAME,
                       body='</html>raw html contents<a href="http://twitter.com/roycehaynes">extract url</a></html>')
 
+connection.close()
+
 ```
 
 ## Contributing and Forking
