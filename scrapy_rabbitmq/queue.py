@@ -59,7 +59,7 @@ class SpiderQueue(Base):
         self.server.basic_publish(
             exchange='',
             routing_key=self.key,
-            body=request
+            body=self._encode_request(request)
         )
 
     def pop(self):
