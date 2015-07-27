@@ -52,7 +52,7 @@ class SpiderQueue(Base):
     def __len__(self):
         """Return the length of the queue"""
         response = self.server.queue_declare(self.key, passive=True)
-        return response.message_count
+        return response.method.message_count
 
     def push(self, request):
         """Push a request"""

@@ -68,5 +68,12 @@ class Scheduler(object):
             self.stats.inc_value('scheduler/enqueued/rabbitmq', spider=self.spider)
         self.queue.push(request)
 
+    def next_request(self):
+        block_pop_timeout = self.idle_before_close
+        request = self.queue.pop()
+        if request and self.stats:
+            self.stats.inc_value('scheduler/dequeued/rabbitmq', spider=self.spider)
+        return request
+
     def has_pending_requests(self):
         return len(self) > 0
