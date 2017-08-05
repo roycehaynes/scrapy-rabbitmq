@@ -1,6 +1,6 @@
 from scrapy_rabbitmq import connection
 from unittest import TestCase
-from tests.common.user import create_user, delete_user
+from tests.common.rabbitmqctl_cmd import create_user, delete_user
 import pika
 
 
