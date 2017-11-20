@@ -1,6 +1,6 @@
 __author__ = 'roycehaynes'
 
-import connection
+from scrapy_rabbitmq.connection import from_settings 
 
 from scrapy.spider import Spider
 from scrapy import signals
@@ -26,7 +26,7 @@ class RabbitMQMixin(object):
         if not self.rabbitmq_key:
             self.rabbitmq_key = '{}:start_urls'.format(self.name)
 
-        self.server = connection.from_settings(self.crawler.settings)
+        self.server = from_settings(self.crawler.settings)
         self.crawler.signals.connect(self.spider_idle, signal=signals.spider_idle)
         self.crawler.signals.connect(self.item_scraped, signal=signals.item_scraped)
 
