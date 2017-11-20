@@ -37,9 +37,6 @@ class RabbitMQMixin(object):
 
         method_frame, header_frame, url = self.server.basic_get(queue=self.rabbitmq_key)
 
-        # TODO(royce): Remove print
-        print url
-
         if url:
             return self.make_requests_from_url(url)
 
