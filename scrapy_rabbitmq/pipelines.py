@@ -1,6 +1,5 @@
 
-import connection
-
+from scrapy_rabbitmq.connection import from_settings
 from twisted.internet.threads import deferToThread
 from scrapy.utils.serialize import ScrapyJSONEncoder
 
@@ -17,7 +16,7 @@ class RabbitMQPipeline(object):
 
     @classmethod
     def from_settings(cls, settings):
-        server = connection.from_settings(settings)
+        server = from_settings(settings)
         exchange_name = settings.get('RABBITMQ_EXCHANGE_NAME', EXCHANGE_NAME)
         return cls(server, exchange_name)
 

@@ -9,6 +9,7 @@ except ImportError:
 RABBITMQ_CONNECTION_TYPE = 'blocking'
 RABBITMQ_QUEUE_NAME = 'scrapy_queue'
 RABBITMQ_CONNECTION_PARAMETERS = {'host': 'localhost'}
+RABBITMQ_DSN = 'amqp://guest:guest@localhost/'
 
 
 def from_settings(settings):
@@ -44,14 +45,19 @@ def from_settings(settings):
     connection_type = settings.get('RABBITMQ_CONNECTION_TYPE', RABBITMQ_CONNECTION_TYPE)
     queue_name = settings.get('RABBITMQ_QUEUE_NAME', RABBITMQ_QUEUE_NAME)
     connection_parameters = settings.get('RABBITMQ_CONNECTION_PARAMETERS', RABBITMQ_CONNECTION_PARAMETERS)
+    connection_dsn = settings.get('RABBITMQ_DSN', RABBITMQ_DSN)
 
-    connection = {
+    connection_producer = {
         'blocking': pika.BlockingConnection,
-        'libev': pika.LibevConnection,
         'select': pika.SelectConnection,
         'tornado': pika.TornadoConnection,
         'twisted': pika.TwistedConnection
-    }[connection_type](pika.ConnectionParameters(**connection_parameters))
+    }[connection_type]
+
+    if connection_dsn:
+        connection = connection_producer(pika.URLParameters(connection_dsn))
+    else:
+        connection = connection_producer(pika.ConnectionParameters(**connection_parameters))
 
     channel = connection.channel()
     channel.queue_declare(queue=queue_name, durable=True)
