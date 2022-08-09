@@ -1,6 +1,6 @@
 __author__ = 'roycehaynes'
 
-import connection
+from scrapy_rabbitmq.connection import from_settings
 
 from scrapy.utils.misc import load_object
 from scrapy_rabbitmq.dupefilter import RFPDupeFilter
@@ -36,7 +36,7 @@ class Scheduler(object):
         queue_cls = load_object(settings.get('SCHEDULER_QUEUE_CLASS', QUEUE_CLASS))
         dupefilter_key = settings.get('DUPEFILTER_KEY', DUPEFILTER_KEY)
         idle_before_close = settings.get('SCHEDULER_IDLE_BEFORE_CLOSE', IDLE_BEFORE_CLOSE)
-        server = connection.from_settings(settings)
+        server = from_settings(settings)
         return cls(server, persist, queue_key, queue_cls, dupefilter_key, idle_before_close)
 
     @classmethod

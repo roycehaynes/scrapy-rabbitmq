@@ -3,7 +3,7 @@ __author__ = 'roycehaynes'
 from scrapy.dupefilter import BaseDupeFilter
 
 import time
-import connection
+from scrapy_rabbitmq.connection import from_settings
 
 from scrapy.dupefilter import BaseDupeFilter
 from scrapy.utils.request import request_fingerprint
@@ -26,7 +26,7 @@ class RFPDupeFilter(BaseDupeFilter):
 
     @classmethod
     def from_settings(cls, settings):
-        server = connection.from_settings(settings)
+        server = from_settings(settings)
         # create one-time key. needed to support to use this
         # class as standalone dupefilter with scrapy's default scheduler
         # if scrapy passes spider on open() method this wouldn't be needed
